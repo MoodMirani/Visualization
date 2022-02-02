@@ -72,6 +72,7 @@ public:
 public:
     FloatProperty radius_;
     FloatProperty rotation_;
+    FloatProperty delta_;
 
 
 //Attributes

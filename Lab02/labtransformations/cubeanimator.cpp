@@ -38,7 +38,8 @@ CubeAnimator::CubeAnimator()
     // For a FloatProperty 
     // variablename(identifier, display name, init value, minvalue, maxvalue)
     , radius_("radius", "Radius", 6, 1, 8)
-    , rotation_("rotation", "Rotation", 0, 0, 8) 
+    , rotation_("rotation", "Rotation", 0, 0, 8)
+    , delta_("delta", "delta", 0, 0, 1)
     {
     // Add ports
     addPort(meshIn_);
@@ -47,6 +48,7 @@ CubeAnimator::CubeAnimator()
     // Add properties
     addProperty(radius_);
     addProperty(rotation_);
+    addProperty(delta_);
 
 }
 
@@ -60,10 +62,25 @@ void CubeAnimator::process()
     // Get the matrix that defines where the mesh is currently
     auto matrix = mesh->getWorldMatrix();
 
+
     // Transform the mesh (TODO)
-    matrix = glm::translate(vec3(radius_.get(), 0, 0)) * matrix;
-    matrix = glm::rotate(rotation_.get(), vec3(0, 0, 1)) * matrix;
+    
+
+    //Getting the time
+    std::time_t result = std::time(nullptr);
+
+    float newX = glm::sin(result ) + radius_.get(); 
+    float newY = newX;
+
+    //matrix = glm::rotate(newZ, vec3(0, 0, 1)) * matrix;
+    
     //matrix = glm::rotate(radius_.get(),vec3( 0, 0, 1)) * matrix;
+
+    //matrix = glm::translate(vec3(radius_.get(), 0, 0)) * matrix;
+    matrix = glm::translate(vec3(newX, 0, 0)) * matrix;
+    matrix = glm::translate(vec3(250, 250, 0)) * matrix;
+    matrix = glm::rotate(rotation_.get(), vec3(0, 0, 1)) * matrix;
+    matrix = glm::translate(vec3(-250, -250, 0)) * matrix;
 
 
  
