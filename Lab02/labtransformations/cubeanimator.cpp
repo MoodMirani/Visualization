@@ -62,7 +62,13 @@ void CubeAnimator::process()
 
     // Transform the mesh (TODO)
     matrix = glm::translate(vec3(radius_.get(), 0, 0)) * matrix;
-    //matrix = glm::rotate(vec3(rotation_.get(), 0, 0)) * matrix;
+    matrix = glm::rotate(rotation_.get(), vec3(0, 0, 1)) * matrix;
+    //matrix = glm::rotate(radius_.get(),vec3( 0, 0, 1)) * matrix;
+
+
+ 
+    //glm::rot
+    //glm::rot
 
     // Update
     mesh->setWorldMatrix(matrix);
