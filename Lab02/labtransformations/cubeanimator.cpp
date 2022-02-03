@@ -68,19 +68,23 @@ void CubeAnimator::process()
 
     //Getting the time
     std::time_t result = std::time(nullptr);
+    //int rad = (int)radius_.get();
 
-    float newX = glm::sin(result ) + radius_.get(); 
-    float newY = newX;
+    float newX = glm::sin(radius_.get()); 
+    //float newX = glm::sin(rotation_.get()) + radius_.get(); 
+    //float newY = newX;
+    //float newnewX = result % (rad+1);
 
     //matrix = glm::rotate(newZ, vec3(0, 0, 1)) * matrix;
     
     //matrix = glm::rotate(radius_.get(),vec3( 0, 0, 1)) * matrix;
 
     //matrix = glm::translate(vec3(radius_.get(), 0, 0)) * matrix;
+    //matrix = glm::translate(vec3(newX, 0, 0)) * matrix;
     matrix = glm::translate(vec3(newX, 0, 0)) * matrix;
-    matrix = glm::translate(vec3(250, 250, 0)) * matrix;
+    //matrix = glm::translate(vec3(250, 250, 0)) * matrix;
     matrix = glm::rotate(rotation_.get(), vec3(0, 0, 1)) * matrix;
-    matrix = glm::translate(vec3(-250, -250, 0)) * matrix;
+    //matrix = glm::translate(vec3(-250, -250, 0)) * matrix;
 
 
  
