@@ -88,7 +88,7 @@ vec4 PhongMaterial::shade(const RayIntersection& intersection, const Light& ligh
     double T2 = std::max(double(dot(normR, normV)), double(0.0));
 
     //ambient part
-    vec3 ambiC = vec3(ambientStrength * ambientMaterialColor_[0] * light.getAmbientColor()[0],
+    vec3 ambiC = vec3(ambientStrength * ambientMaterialColor_[0] * light.getAmbientColor()[0], //we dive and multiply three times as we use an RGB model
                       ambientStrength * ambientMaterialColor_[1] * light.getAmbientColor()[1],
                       ambientStrength * ambientMaterialColor_[2] * light.getAmbientColor()[2]);
 
@@ -102,7 +102,6 @@ vec4 PhongMaterial::shade(const RayIntersection& intersection, const Light& ligh
                       (diffuseMaterialColor_[1] * light.getDiffuseColor()[1] * cosNL) / attentuation,
                       (diffuseMaterialColor_[2] * light.getDiffuseColor()[2] * cosNL) / attentuation);
 
-    
 
     vec3 sumC = (ambiC + specC + diffC); // sum both diffuse and specular color components //color
 
