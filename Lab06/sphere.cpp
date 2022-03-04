@@ -13,9 +13,12 @@
 
 namespace inviwo {
 
-Sphere::Sphere(const vec3& center, const double& radius) {
+Sphere::Sphere(const vec3& center, const double& radius, const vec3& center2, const double& radius2) {
     center_ = center;
     radius_ = radius;
+    center2_ = center2;
+    radius2_ = radius2;
+
 }
 
 bool Sphere::closestIntersection(const Ray& ray, double maxLambda,
@@ -54,11 +57,11 @@ bool Sphere::closestIntersection(const Ray& ray, double maxLambda,
     float secondLambda = ((-d - sqrt(equat)) / 2 * x);
     float lambda; //ray parameter(dynamic variable)
 
-    if (firstLambda >= 0.0 && secondLambda <= 0.0) {  // if lambda 1 is positive, take the positive one
+    if (firstLambda >= 0.00 && secondLambda <= 0.00) {  // if lambda 1 is positive, take the positive one
         lambda = firstLambda;
-    } else if (secondLambda >= 0.0 && firstLambda <= 0.0) {  // if lamb2 is positive and lamb1 negative, take the positive one
+    } else if (secondLambda >= 0.00 && firstLambda <= 0.00) {  // if lamb2 is positive and lamb1 negative, take the positive one
         lambda = secondLambda;
-    } else if (firstLambda >= 0.0 && secondLambda >= 0.0) {  // if both values are bigger than 0,
+    } else if (firstLambda >= 0.00 && secondLambda >= 0.00) {  // if both values are bigger than 0,
         lambda = std::min(firstLambda, secondLambda); // get minimum positive value from the both
     } else {
         return false; //if any option contemplated before, return false
@@ -105,7 +108,7 @@ void Sphere::drawGeometry(std::shared_ptr<BasicMesh> mesh,
                       center_;
             vec3 v3 = vec3(radius_ * sin(theta2) * cos(phi2), radius_ * sin(theta2) * sin(phi2),
                            radius_ * cos(theta2)) +
-                      center_;
+                      center_; 
 
             Util::drawLineSegment(v1, v2, vec4(0.2, 0.2, 0.2, 1), indexBuffer.get(), vertices);
             Util::drawLineSegment(v2, v3, vec4(0.2, 0.2, 0.2, 1), indexBuffer.get(), vertices);
