@@ -111,7 +111,6 @@ void Sphere::drawGeometry(std::shared_ptr<BasicMesh> mesh,
                       center_; 
 
             Util::drawLineSegment(v1, v2, vec4(0.2, 0.2, 0.2, 1), indexBuffer.get(), vertices);
-            Util::drawLineSegment(v2, v3, vec4(0.2, 0.2, 0.2, 1), indexBuffer.get(), vertices);
         }
     }
 }
