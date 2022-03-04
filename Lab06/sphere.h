@@ -28,7 +28,8 @@ public:
 
     //Construction / Deconstruction
 public:
-    Sphere(const vec3& center = vec3(0, 0, 0), const double& radius = 1.0);
+    Sphere(const vec3& center = vec3(0, 0, 0), const double& radius = 1.0,
+           const vec3& center2 = vec3(1, 1, 1), const double& radius2 = 2.0);
     virtual ~Sphere() = default;
 
     //Methods
@@ -42,6 +43,8 @@ public:
 private:
     vec3 center_;
     double radius_;
+    vec3 center2_;
+    double radius2_;
 };
 
 } // namespace
